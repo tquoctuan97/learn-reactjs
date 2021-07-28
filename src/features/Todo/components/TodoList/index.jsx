@@ -3,14 +3,21 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 TodoList.propTypes = {
+    todoList: PropTypes.array,
+};
 
-}
+TodoList.defaultProps = {
+    todoList: [],
+};
 
-function TodoList() {
+function TodoList(props) {
+    const { todoList } = props;
     return (
-        <p>
-            TodoList
-        </p>
+        <ul>
+            {todoList.map(item => (
+                <li key={item.id} >{item.title}</li>
+            ))}
+        </ul>
     )
 }
 
