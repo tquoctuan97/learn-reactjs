@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import TodoList from './components/TodoList';
+import TodoList from '../../components/TodoList';
 
-function TodoFeature(props) {
+function ListPage(props) {
   const initTodoList = [
     {
       id: 1,
@@ -70,4 +70,4 @@ function TodoFeature(props) {
   );
 }
 
-export default TodoFeature;
+export default ListPage;
