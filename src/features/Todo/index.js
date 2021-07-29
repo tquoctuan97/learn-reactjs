@@ -2,72 +2,72 @@ import React, { useState } from 'react';
 import TodoList from './components/TodoList';
 
 function TodoFeature(props) {
-    const initTodoList = [
-        {
-            id: 1,
-            title: 'Eat',
-            status: 'new'
-        },
-        {
-            id: 2,
-            title: 'Sleep',
-            status: 'compeleted'
-        },
-        {
-            id: 3,
-            title: 'Code',
-            status: 'new'
-        }
-    ]
+  const initTodoList = [
+    {
+      id: 1,
+      title: 'Eat',
+      status: 'new',
+    },
+    {
+      id: 2,
+      title: 'Sleep',
+      status: 'compeleted',
+    },
+    {
+      id: 3,
+      title: 'Code',
+      status: 'new',
+    },
+  ];
 
-    const [todoList, setTodoList] =  useState(initTodoList);
-    const [filteredStatus, setFilteredStatus] = useState('all');
+  const [todoList, setTodoList] = useState(initTodoList);
+  const [filteredStatus, setFilteredStatus] = useState('all');
 
-    const handleTodoList = (todo, idx) => {
-        // clone current array to the new array
-        const newTodoList = [...todoList];
+  const handleTodoList = (todo, idx) => {
+    // clone current array to the new array
+    const newTodoList = [...todoList];
 
-        // toggle state
-        console.log(todo, idx);
-        
-        const newTodo = {
-            ...newTodoList[idx],
-            status: newTodoList[idx].status === 'new' ? 'compeleted' : 'new'
-        }
+    // toggle state
+    console.log(todo, idx);
 
-        newTodoList[idx] = newTodo;
+    const newTodo = {
+      ...newTodoList[idx],
+      status: newTodoList[idx].status === 'new' ? 'compeleted' : 'new',
+    };
 
-        // update todolist
-        setTodoList(newTodoList);
-    }
+    newTodoList[idx] = newTodo;
 
-    const handleShowAllClick = () => {
-        setFilteredStatus('all');
-    }
+    // update todolist
+    setTodoList(newTodoList);
+  };
 
-    const handleShowCompeletedClick = () => {
-        setFilteredStatus('compeleted');
-    }
+  const handleShowAllClick = () => {
+    setFilteredStatus('all');
+  };
 
-    const handleShowNewClick = () => {
-        setFilteredStatus('new');
-    }
+  const handleShowCompeletedClick = () => {
+    setFilteredStatus('compeleted');
+  };
 
-    const renderedTodoList = todoList.filter(todo => filteredStatus === 'all' || filteredStatus === todo.status);
-    console.log(renderedTodoList);    
+  const handleShowNewClick = () => {
+    setFilteredStatus('new');
+  };
 
-    return (
-        <div>
-            <h2>Todo List</h2>
-            <TodoList todoList={renderedTodoList} onTodoClick={handleTodoList}/>
-            
-            <div>
-                <button onClick={handleShowAllClick}>Show All</button>
-                <button onClick={handleShowCompeletedClick}>Show Compeleted</button>
-                <button onClick={handleShowNewClick}>Show New</button>
-            </div>
-        </div>
-    );
+  const renderedTodoList = todoList.filter((todo) => filteredStatus === 'all' || filteredStatus === todo.status);
+  console.log(renderedTodoList);
+
+  return (
+    <div>
+      <h2>Todo List</h2>
+      <TodoList todoList={renderedTodoList} onTodoClick={handleTodoList} />
+
+      <div>
+        <button onClick={handleShowAllClick}>Show All</button>
+        <button onClick={handleShowCompeletedClick}>Show Compeleted</button>
+        <button onClick={handleShowNewClick}>Show New</button>
+      </div>
+    </div>
+  );
 }
 
 export default TodoFeature;
