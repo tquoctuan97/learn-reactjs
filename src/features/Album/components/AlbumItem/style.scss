@@ -1,0 +1,15 @@
+.album {
+    max-width: 190px;
+
+    &__img {
+        border-radius: 0.5em;
+        width: 100%;
+        height: auto;
+    }
+
+    &__title {
+        margin: 8px 0 3px 0;
+        font-size: 15px;
+        font-weight: 700;
+    }
+}
