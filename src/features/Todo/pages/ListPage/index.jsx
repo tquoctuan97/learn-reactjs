@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import TodoList from '../../components/TodoList';
 
 function ListPage(props) {
@@ -20,8 +22,12 @@ function ListPage(props) {
     },
   ];
 
+  const location = useLocation();
   const [todoList, setTodoList] = useState(initTodoList);
-  const [filteredStatus, setFilteredStatus] = useState('all');
+  const [filteredStatus, setFilteredStatus] = useState(() => {
+    const param = queryString.parse(location.search);
+    return param.status || 'all';
+  });
 
   const handleTodoList = (todo, idx) => {
     // clone current array to the new array
