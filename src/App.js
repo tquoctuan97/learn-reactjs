@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import NotFound from './components/NotFound';
 import AlbumFeature from './features/Album';
 import TodoFeature from './features/Todo';
 
@@ -19,6 +20,8 @@ function App() {
 
         <Route path="/todos" component={TodoFeature} />
         <Route path="/album" component={AlbumFeature} />
+
+        <Route component={NotFound} />
       </Switch>
       Footer
     </div>
